@@ -5,7 +5,7 @@ RegisterCommand('trunk', function()
     local playerPed = GetPlayerPed(-1)
     local vehicle = GetVehiclePedIsIn(playerPed, false)
 
-    if vehicle ~= 0 then -- проверяем, находится ли игрок в машине
+    if vehicle ~= 0 then -- check if the player is in the car
         if not trunk then
             SetVehicleDoorOpen(vehicle, 5, false, false)
             trunk = true
@@ -13,7 +13,7 @@ RegisterCommand('trunk', function()
             SetVehicleDoorShut(vehicle, 5, false)
             trunk = false
         end
-    else -- если игрок не находится в машине, то ищем ближайшую машину
+    else -- if the player is not in the car, then we are looking for the nearest car
         local closestVehicle = GetClosestVehicle(GetEntityCoords(playerPed), 3.0, 0, 71)
         if closestVehicle ~= 0 then
             if not trunk then
